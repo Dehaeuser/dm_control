@@ -86,7 +86,7 @@ class SwingUp(base.Task):
       physics: An instance of `Physics`.
 
     """
-    physics.named.data.qpos['hinge'] = np.pi #self.random.uniform(-np.pi, np.pi)
+    physics.named.data.qpos['hinge'] = 0.0 #self.random.uniform(-np.pi, np.pi)
     super().initialize_episode(physics)
 
   def get_observation(self, physics):
