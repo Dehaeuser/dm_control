@@ -16,7 +16,9 @@
 """Cartpole domain."""
 
 import collections
-
+import math
+import random
+from typing import Callable, Optional, Tuple, Union
 from dm_control import mujoco
 from dm_control.rl import control
 from dm_control.suite import base
