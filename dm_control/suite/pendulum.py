@@ -86,7 +86,7 @@ class SwingUp(base.Task):
       physics: An instance of `Physics`.
 
     """
-    epsilon = 0.2
+    epsilon = 0.006
     physics.named.data.qpos['hinge'] = self.random.uniform(0-epsilon, 0+epsilon)
     super().initialize_episode(physics)
 
