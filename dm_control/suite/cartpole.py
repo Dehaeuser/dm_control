@@ -185,9 +185,9 @@ class Balance(base.Task):
     """
     nv = physics.model.nv
     if self._swing_up:
-      physics.named.data.qpos['slider'] = .01*self.random.randn()
-      physics.named.data.qpos['hinge_1'] = np.pi + .01*self.random.randn()
-      physics.named.data.qpos[2:] = .1*self.random.randn(nv - 2)
+      physics.named.data.qpos['slider'] = random.random() * 2.56 - 1.28
+      physics.named.data.qpos['hinge_1'] = np.pi - (random.random() * 0.1 - 0.05)
+      physics.named.data.qpos[2:] = 0
     else:
       physics.named.data.qpos['slider'] = self.random.uniform(-.1, .1)
       physics.named.data.qpos[1:] = self.random.uniform(-.034, .034, nv - 1)
