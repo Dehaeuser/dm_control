@@ -16,9 +16,7 @@
 """Cartpole domain."""
 
 import collections
-import math
-import random
-from typing import Callable, Optional, Tuple, Union
+
 from dm_control import mujoco
 from dm_control.rl import control
 from dm_control.suite import base
@@ -187,9 +185,9 @@ class Balance(base.Task):
     """
     nv = physics.model.nv
     if self._swing_up:
-      physics.named.data.qpos['slider'] = random.random() * 2.56 - 1.28
-      physics.named.data.qpos['hinge_1'] = np.pi - (random.random() * 0.1 - 0.05)
-      physics.named.data.qpos[2:] = 0
+      physics.named.data.qpos['slider'] = .01*self.random.randn()
+      physics.named.data.qpos['hinge_1'] = np.pi + .01*self.random.randn()
+      physics.named.data.qpos[2:] = .1*self.random.randn(nv - 2)
     else:
       physics.named.data.qpos['slider'] = self.random.uniform(-.1, .1)
       physics.named.data.qpos[1:] = self.random.uniform(-.034, .034, nv - 1)
@@ -225,3 +223,4 @@ class Balance(base.Task):
   def get_reward(self, physics):
     """Returns a sparse or a smooth reward, as specified in the constructor."""
     return self._get_reward(physics, sparse=self._sparse)
+
